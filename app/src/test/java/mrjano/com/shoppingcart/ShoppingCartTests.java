@@ -16,7 +16,7 @@ import static org.junit.Assert.assertTrue;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class ShoppingCartTests {
-    
+
     @Test
     public void shopping_cart_accepts_oranges() {
         ShoppingCart shoppingCart = new ShoppingCart();
@@ -29,5 +29,12 @@ public class ShoppingCartTests {
         ShoppingCart shoppingCart = new ShoppingCart();
         Float total = shoppingCart.processItems(Arrays.<Item>asList(new Apple(), new Apple()));
         assertTrue(total == 1.2f);
+    }
+
+    @Test
+    public void shopping_cart_accepts_both() {
+        ShoppingCart shoppingCart = new ShoppingCart();
+        Float total = shoppingCart.processItems(Arrays.asList(new Apple(), new Apple(), new Orange()));
+        assertTrue(total == 1.45f);
     }
 }
