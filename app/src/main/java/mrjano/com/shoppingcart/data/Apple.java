@@ -8,5 +8,6 @@ public class Apple extends Item {
 
     public Apple() {
         price = 0.6f;
+        discount = Discount.BUY_ONE_GET_ONE;
     }
 }

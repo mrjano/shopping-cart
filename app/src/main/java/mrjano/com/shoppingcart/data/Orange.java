@@ -8,5 +8,6 @@ public class Orange extends Item{
 
     public Orange() {
         price = 0.25f;
+        discount = Discount.THREE_FOR_TWO;
     }
 }

@@ -20,8 +20,8 @@ public class ShoppingCartTests {
     @Test
     public void shopping_cart_accepts_oranges() {
         ShoppingCart shoppingCart = new ShoppingCart();
-        Float total = shoppingCart.processItems(Arrays.<Item>asList(new Orange(), new Orange()));
-        assertTrue(total == 0.5f);
+        Float total = shoppingCart.processItems(Arrays.<Item>asList(new Orange()));
+        assertTrue(total == 0.25f);
     }
 
     @Test
@@ -34,8 +34,8 @@ public class ShoppingCartTests {
     @Test
     public void shopping_cart_accepts_both() {
         ShoppingCart shoppingCart = new ShoppingCart();
-        Float total = shoppingCart.processItems(Arrays.asList(new Apple(), new Apple(), new Orange()));
-        assertTrue(total == 1.45f);
+        Float total = shoppingCart.processItems(Arrays.asList(new Apple(), new Orange()));
+        assertTrue(total == 0.85f);
     }
 
     @Test
@@ -45,7 +45,7 @@ public class ShoppingCartTests {
         assertTrue(total == 0.6f);
         //Test double discount
         Float totalDouble = shoppingCart.processItems(Arrays.<Item>asList(new Apple(), new Apple(), new Apple(), new Apple()));
-        assertTrue(total == 1.2f);
+        assertTrue(totalDouble == 1.2f);
     }
 
     @Test
