@@ -27,8 +27,8 @@ public class ShoppingCartTests {
     @Test
     public void shopping_cart_accepts_apples() {
         ShoppingCart shoppingCart = new ShoppingCart();
-        Float total = shoppingCart.processItems(Arrays.<Item>asList(new Apple(), new Apple()));
-        assertTrue(total == 1.2f);
+        Float total = shoppingCart.processItems(Arrays.<Item>asList(new Apple()));
+        assertTrue(total == 0.6f);
     }
 
     @Test
@@ -36,5 +36,32 @@ public class ShoppingCartTests {
         ShoppingCart shoppingCart = new ShoppingCart();
         Float total = shoppingCart.processItems(Arrays.asList(new Apple(), new Apple(), new Orange()));
         assertTrue(total == 1.45f);
+    }
+
+    @Test
+    public void apply_apple_discount() {
+        ShoppingCart shoppingCart = new ShoppingCart();
+        Float total = shoppingCart.processItems(Arrays.<Item>asList(new Apple(), new Apple()));
+        assertTrue(total == 0.6f);
+        //Test double discount
+        Float totalDouble = shoppingCart.processItems(Arrays.<Item>asList(new Apple(), new Apple(), new Apple(), new Apple()));
+        assertTrue(total == 1.2f);
+    }
+
+    @Test
+    public void apply_orange_discount() {
+        ShoppingCart shoppingCart = new ShoppingCart();
+        Float total = shoppingCart.processItems(Arrays.<Item>asList(new Orange(), new Orange(), new Orange()));
+        assertTrue(total == 0.5f);
+        //Test double discount
+        Float totalDouble = shoppingCart.processItems(Arrays.<Item>asList(new Orange(), new Orange(), new Orange(), new Orange(), new Orange(), new Orange()));
+        assertTrue(totalDouble == 1.0f);
+    }
+
+    @Test
+    public void apply_both_discounts() {
+        ShoppingCart shoppingCart = new ShoppingCart();
+        Float total = shoppingCart.processItems(Arrays.asList(new Orange(), new Orange(), new Orange(), new Apple(), new Apple()));
+        assertTrue(total == 1.1f);
     }
 }
